@@ -1,15 +1,23 @@
 function pigLatin(word) {
-  const inputArr = word.split("");
-  let output;
-  const vowelArr = ["a", "e", "i", "o", "u"]
-  for (let i = 0; i < 5; i += 1) {
-    if (inputArr[0] === vowelArr[i]) {
-      inputArr.push("way");
-      output = inputArr.join("");
-      break;
+  let userArr = word.split("");
+  const vowelArr = ["a", "e", "i", "o", "u"];
+  const consonantArr = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"];
+  let newArr = [];
+  if (vowelArr.includes(userArr[0])) {
+    userArr.push("way");
+    return userArr.join("");
+  } else if (consonantArr.includes(userArr[0])) {
+    for (let i = 0; i < userArr.length; i += 1) {
+      if (vowelArr.includes(userArr[i])) {
+        newArr = userArr.toSpliced(i);
+        newArr.forEach(function(element) {
+          userArr.push(element);
+        });
+        userArr.splice(0, i);
+        return userArr.join("");
+      }
     }
   }
-  return output;
 }
 
 window.addEventListener("load", function() {
@@ -17,10 +25,10 @@ window.addEventListener("load", function() {
   form.addEventListener("submit", function(e) {
     e.preventDefault();
     const input = document.querySelector("input").value;
-    let output = pigLatin(input);
-    const result = document.getElementById("results");
+    const output = pigLatin(input);
+    const results = document.getElementById("results");
     const p = document.createElement("p");
     p.append(output);
-    result.append(p);
+    results.append(p);
   });
 });
