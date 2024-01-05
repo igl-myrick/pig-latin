@@ -13,6 +13,7 @@ function pigLatin(word) {
         newArr.forEach(function(element) {
           userArr.push(element);
         });
+        userArr.push("ay");
         userArr.splice(0, i);
         return userArr.join("");
       }
