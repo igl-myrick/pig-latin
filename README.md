@@ -8,6 +8,10 @@ Test: "If a word begins with consonants, it will move the opening consonants to 
 Code: pigLatin("word");
 Expected Output: "ordw"
 
-Test: "It will add "ay" to words beginning with consonants."
+Test: "It will additionally add "ay" to words beginning with consonants."
 Code: pigLatin("word");
 Expected Output: "ordway"
+
+Test: "It will move both "q" and "u" if a word begins with "qu"."
+Code: pigLatin("quest");
+Expected Output: "estquay"
